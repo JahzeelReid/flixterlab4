@@ -1,10 +1,13 @@
 package com.codepath.bestsellerlistapp
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.codepath.bestsellerlistapp.R.id
 
 /**
@@ -12,7 +15,7 @@ import com.codepath.bestsellerlistapp.R.id
  * specified [OnListFragmentInteractionListener].
  */
 class BestSellerBooksRecyclerViewAdapter(
-    private val books: List<BestSellerBook>,
+    private val books: List<Movie>,
     private val mListener: OnListFragmentInteractionListener?
     )
     : RecyclerView.Adapter<BestSellerBooksRecyclerViewAdapter.BookViewHolder>()
@@ -28,12 +31,14 @@ class BestSellerBooksRecyclerViewAdapter(
      * (Yes, the same ones as in the XML layout files!)
      */
     inner class BookViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
-        var mItem: BestSellerBook? = null
-        val mBookTitle: TextView = mView.findViewById<View>(id.book_title) as TextView
-        val mBookAuthor: TextView = mView.findViewById<View>(id.book_author) as TextView
+        var mItem: Movie? = null
+        val mMovieTitle: TextView = mView.findViewById<View>(id.Movie_title) as TextView
+        val mBookDescrip: TextView = mView.findViewById<View>(id.Movie_descrip) as TextView
+        val mpic : ImageView = mView.findViewById<View>(id.urlimage) as ImageView
+
 
         override fun toString(): String {
-            return mBookTitle.toString() + " '" + mBookAuthor.text + "'"
+            return mMovieTitle.toString() + " '" + mBookDescrip.text + "'"
         }
     }
 
@@ -44,8 +49,15 @@ class BestSellerBooksRecyclerViewAdapter(
         val book = books[position]
 
         holder.mItem = book
-        holder.mBookTitle.text = book.title
-        holder.mBookAuthor.text = book.author
+        holder.mMovieTitle.text = book.title
+        holder.mBookDescrip.text = book.descrip
+        //holder.mpic.image = book.final
+        println(book.final)
+        Log.d("pic", book.final)
+        Glide.with(holder.mView)
+            .load(book.final)
+            .centerInside()
+            .into(holder.mpic)
 
         holder.mView.setOnClickListener {
             holder.mItem?.let { book ->
