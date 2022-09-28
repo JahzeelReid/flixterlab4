@@ -1,5 +1,6 @@
 package com.codepath.bestsellerlistapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -60,7 +61,7 @@ class MovieFragment : Fragment(), OnListFragmentInteractionListener {
 
         // Using the client, perform the HTTP request
         client[
-                "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US&page=1",
+                "https://api.themoviedb.org/3/movie/popular?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US&page=1",
                 params,
                 object : JsonHttpResponseHandler()
 
@@ -92,6 +93,9 @@ class MovieFragment : Fragment(), OnListFragmentInteractionListener {
                 Log.d("fail", "got here4")
 
                 val models : List<Movie> = gson.fromJson(moviesRawJSON, arrayBookType) // Fix me!
+                for(movie in models){
+                    movie.final += movie.ImageUrl
+                }
                 recyclerView.adapter = BestSellerBooksRecyclerViewAdapter(models, this@MovieFragment)
 
                 // Look for this in Logcat:
@@ -125,7 +129,22 @@ class MovieFragment : Fragment(), OnListFragmentInteractionListener {
      * What happens when a particular book is clicked.
      */
     override fun onItemClick(item: Movie) {
-        Toast.makeText(context, "test: " + item.title, Toast.LENGTH_LONG).show()
+        //item.final += item.ImageUrl
+        //val movie = models[absoluteAdapterPosition]
+        val url = item.final
+        val name = item.title
+        val descrip = item.descrip
+        val pop = item.pop
+        val adult = item.adult
+        Toast.makeText(context, item.final, Toast.LENGTH_LONG).show()
+        val intent = Intent(context, detail::class.java)
+        intent.putExtra("name", name)
+        intent.putExtra("descrip", descrip)
+        intent.putExtra("url", url)
+        intent.putExtra("adult", adult)
+        intent.putExtra("pop", pop)
+        startActivity(intent)
+        //Toast.makeText(context, "test: " + item.title, Toast.LENGTH_LONG).show()
     }
 
 }
