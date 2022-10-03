@@ -8,17 +8,45 @@
     <TextView
         android:id="@+id/Movie_title"
         android:layout_width="150dp"
-        android:layout_height="25dp"
+        android:layout_height="100dp"
+        android:textSize="40dp"
         android:textAppearance="?attr/textAppearanceListItem"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.127" />
+        app:layout_constraintVertical_bias="0.48" />
+
+    <TextView
+        android:id="@+id/stuff"
+        android:layout_width="175dp"
+        android:layout_height="30dp"
+        android:textSize="20dp"
+        android:text="Popularity Ranking:"
+        android:textAppearance="?attr/textAppearanceListItem"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.05" />
 
     <TextView
         android:id="@+id/rated"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:textAppearance="?attr/textAppearanceListItem"
+        android:textSize="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.688"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.006" />
+
+    <TextView
+        android:id="@+id/pg"
         android:layout_width="150dp"
         android:layout_height="25dp"
         android:textAppearance="?attr/textAppearanceListItem"
@@ -27,7 +55,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.518" />
+        app:layout_constraintVertical_bias="0.600" />
 
     <TextView
         android:id="@+id/Movie_descrip"
@@ -38,7 +66,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.708" />
+        app:layout_constraintVertical_bias="0.800" />
 
     <ImageView
         android:id="@+id/urlimage"
@@ -49,6 +77,6 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.325" />
+        app:layout_constraintVertical_bias="0.253" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

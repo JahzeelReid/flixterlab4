@@ -136,8 +136,8 @@ class MovieFragment : Fragment(), OnListFragmentInteractionListener {
         val descrip = item.descrip
         val pop = item.pop
         val adult = item.adult
-        Toast.makeText(context, item.final, Toast.LENGTH_LONG).show()
-        val intent = Intent(context, detail::class.java)
+        //Toast.makeText(context, item.final, Toast.LENGTH_LONG).show()
+        val intent = Intent(context, Detail::class.java)
         intent.putExtra("name", name)
         intent.putExtra("descrip", descrip)
         intent.putExtra("url", url)
